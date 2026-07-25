@@ -7,7 +7,7 @@ cask "mainspring" do
   desc "Turn 90+ hidden macOS settings into one-click, reversible toggles"
   homepage "https://trymainspring.com/"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   pkg "Mainspring-#{version}.pkg"
 
