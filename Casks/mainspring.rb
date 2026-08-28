@@ -2,15 +2,16 @@ cask "mainspring" do
   version "3.3.0"
   sha256 "64228e1af14045b7d2f6ff8ff50f237cc6461e2246f0a568f896293b32837e4d"
 
-  url "https://trymainspring.com/downloads/Mainspring-#{version}.pkg"
+  url "https://trymainspring.com/downloads/Mainspring-#{version}.pkg",
+      verified: "trymainspring.com/"
   name "Mainspring"
-  desc "One-click, reversible toggles for hidden system settings"
+  desc "Utility for reversibly toggling hidden system settings"
   homepage "https://trymainspring.com/"
 
   livecheck do
     url "https://trymainspring.com/downloads/Mainspring.pkg"
     strategy :header_match do |headers|
-      headers["content-disposition"][/Mainspring-(\d+(?:\.\d+)+)\.pkg/i, 1]
+      headers["content-disposition"][/Mainspring[._-]v?(\d+(?:\.\d+)+)\.pkg/i, 1]
     end
   end
 
