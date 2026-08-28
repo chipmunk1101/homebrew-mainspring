@@ -1,17 +1,16 @@
 cask "mainspring" do
-  version "3.2.3"
-  sha256 "6d235ba4d3803e424327183dae9a1bd9bada1f9be8d03b4b63d82ba8316852e5"
+  version "3.3.0"
+  sha256 "64228e1af14045b7d2f6ff8ff50f237cc6461e2246f0a568f896293b32837e4d"
 
-  url "https://trymainspring.com/downloads/Mainspring-#{version}.pkg",
-      verified: "trymainspring.com/"
+  url "https://trymainspring.com/downloads/Mainspring-#{version}.pkg"
   name "Mainspring"
-  desc "Utility for reversibly toggling hidden system settings"
+  desc "One-click, reversible toggles for hidden system settings"
   homepage "https://trymainspring.com/"
 
   livecheck do
     url "https://trymainspring.com/downloads/Mainspring.pkg"
     strategy :header_match do |headers|
-      headers["content-disposition"][/Mainspring[._-]v?(\d+(?:\.\d+)+)\.pkg/i, 1]
+      headers["content-disposition"][/Mainspring-(\d+(?:\.\d+)+)\.pkg/i, 1]
     end
   end
 
@@ -19,7 +18,12 @@ cask "mainspring" do
 
   pkg "Mainspring-#{version}.pkg"
 
-  uninstall pkgutil: "app.mainspring.pkg"
+  uninstall quit:    "app.mainspring",
+            pkgutil: "app.mainspring.pkg"
 
-  zap trash: "~/Library/Preferences/app.mainspring.plist"
+  zap trash: [
+    "~/Library/Application Support/Mainspring",
+    "~/Library/Caches/app.mainspring",
+    "~/Library/Preferences/app.mainspring.plist",
+  ]
 end
