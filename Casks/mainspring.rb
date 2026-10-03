@@ -1,6 +1,6 @@
 cask "mainspring" do
-  version "3.3.1"
-  sha256 "672b151d4fafa1decce51f606bad0b9c8236ce1069f46df2ec1563ce6312e070"
+  version "3.4.0"
+  sha256 "84ecee1c7b48d1170cf6df35594735a7137dfe1b92a5f364e957cbeb3b81c67e"
 
   url "https://trymainspring.com/downloads/Mainspring-#{version}.pkg",
       verified: "trymainspring.com/"
